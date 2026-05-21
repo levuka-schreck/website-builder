@@ -116,7 +116,7 @@ function Stats() {
     <section className="border-t border-border/60">
       <div className="mx-auto max-w-7xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((s, i) => (
-          <div key={i} className="flex items-baseline gap-4">
+          <div key={i} className="flex items-center gap-4">
             <span className="text-5xl font-semibold text-primary">{s.n}</span>
             <span className="text-sm text-muted-foreground leading-tight max-w-[6rem]">{s.l}</span>
           </div>
