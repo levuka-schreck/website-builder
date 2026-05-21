@@ -147,15 +147,6 @@ function About() {
   );
 }
 
-function WorkersBanner() {
-  return (
-    <div className="mx-auto max-w-7xl px-6 pb-20">
-      <div className="rounded-3xl overflow-hidden">
-        <img src={workersImg} alt="Construction team" className="w-full h-72 md:h-96 object-cover" />
-      </div>
-    </div>
-  );
-}
 
 function Services() {
   const [active, setActive] = useState(0);
