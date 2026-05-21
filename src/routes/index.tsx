@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, MapPin, Phone, Mail, Clock, Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
 import { useState } from "react";
 import heroImg from "@/assets/opifex/hero.jpg";
-import workersImg from "@/assets/opifex/workers.jpg";
+
 import serviceImg from "@/assets/opifex/service.jpg";
 import t1 from "@/assets/opifex/t1.jpg";
 import t2 from "@/assets/opifex/t2.jpg";
