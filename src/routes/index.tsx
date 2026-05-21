@@ -247,22 +247,22 @@ function Contact() {
             <li className="flex gap-3 items-start"><Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>Monday – Friday:<br />9:00 AM – 5:00 PM</span></li>
           </ul>
         </div>
-        <form className="p-10 space-y-5">
+        <form className="p-10 space-y-5" onSubmit={(e) => e.preventDefault()}>
           {[
-            { l: "Full Name", p: "Ex. John Doe" },
-            { l: "Email Address", p: "Ex. johndoe@xyz.abc" },
-            { l: "Subject", p: "Subject Here" },
+            { l: "Full Name", p: "Ex. John Doe", type: "text" },
+            { l: "Email Address", p: "Ex. johndoe@xyz.abc", type: "email" },
+            { l: "Subject", p: "Subject Here", type: "text" },
           ].map((f) => (
             <div key={f.l}>
               <label className="text-xs text-muted-foreground">{f.l}</label>
-              <input placeholder={f.p} className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary" />
+              <input type={f.type} placeholder={f.p} className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary" />
             </div>
           ))}
           <div>
             <label className="text-xs text-muted-foreground">Your Message</label>
             <textarea rows={3} placeholder="Type your message" className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary resize-none" />
           </div>
-          <PillButton>Send Message</PillButton>
+          <PillButton type="submit">Send Message</PillButton>
         </form>
         <div className="relative min-h-[300px]">
           <img src={contactImg} alt="Office" className="absolute inset-0 w-full h-full object-cover" />
