@@ -318,7 +318,7 @@ function Home() {
       <Hero />
       <Stats />
       <About />
-      <WorkersBanner />
+      
       <Services />
       <Testimonials />
       <Contact />
