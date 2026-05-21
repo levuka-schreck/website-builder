@@ -83,7 +83,7 @@ function Nav() {
             <a key={l} href={`#${l.toLowerCase()}`} className="hover:text-foreground transition-colors">{l}</a>
           ))}
         </nav>
-        <PillButton variant="ghost">Contact Us</PillButton>
+        <PillButton variant="ghost" href="#contact">Contact Us</PillButton>
       </div>
     </header>
   );
