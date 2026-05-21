@@ -141,7 +141,7 @@ function About() {
         <p>
           We understand the complex challenges facing today's construction industry and work closely with our clients to develop tailored strategies that optimize efficiency, reduce costs, and enhance project outcomes.
         </p>
-        <PillButton>Start a Project</PillButton>
+        <PillButton href="#contact">Start a Project</PillButton>
       </div>
     </section>
   );
