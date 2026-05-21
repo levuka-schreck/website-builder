@@ -104,7 +104,7 @@ function Hero() {
           We deliver enterprise-grade consulting solutions that empower contractors and construction professionals to optimize operations, maximize efficiency, and deliver exceptional results on every project.
         </p>
         <div className="mt-10">
-          <PillButton>Our Services</PillButton>
+          <PillButton href="#services">Our Services</PillButton>
         </div>
       </div>
     </section>
