@@ -212,8 +212,8 @@ function Testimonials() {
             Real outcomes from real partnerships. Here's what construction leaders say about working with The Opifex Group.
           </p>
         </div>
-        <div className="flex md:justify-end items-start">
-          <PillButton>View More Testimonials</PillButton>
+        <div className="flex md:justify-end items-center">
+          <PillButton href="#testimonials">View More Testimonials</PillButton>
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
