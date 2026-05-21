@@ -219,14 +219,11 @@ function Testimonials() {
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t) => (
           <article key={t.name} className="bg-surface rounded-2xl overflow-hidden flex flex-col">
-            <div className="flex gap-4 p-4 items-stretch relative">
-              <img src={t.img} alt={t.name} className="w-28 h-36 object-cover rounded-xl flex-shrink-0" />
-              <div className="flex-1 pt-2">
-                <h3 className="text-base font-semibold text-foreground">{t.name}</h3>
+            <div className="flex gap-4 p-4 items-center">
+              <img src={t.img} alt={t.name} className="w-24 h-24 object-cover rounded-xl flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-semibold text-foreground truncate">{t.name}</h3>
                 <p className="text-sm text-primary mt-1">{t.role}</p>
-              </div>
-              <div className="absolute left-[6.5rem] top-1/2 -translate-y-1/2 bg-background/80 rounded-full p-1.5 border border-border">
-                <ChevronRight className="h-3 w-3" />
               </div>
             </div>
             <p className="px-5 pb-6 text-sm text-muted-foreground leading-relaxed">"{t.quote}"</p>
