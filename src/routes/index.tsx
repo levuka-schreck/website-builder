@@ -51,12 +51,21 @@ function Logo() {
   );
 }
 
-function PillButton({ children, variant = "primary", className = "" }: { children: React.ReactNode; variant?: "primary" | "ghost"; className?: string }) {
+function PillButton({ children, variant = "primary", className = "", href, onClick, type = "button" }: { children: React.ReactNode; variant?: "primary" | "ghost"; className?: string; href?: string; onClick?: () => void; type?: "button" | "submit" }) {
   const styles = variant === "primary"
     ? "bg-primary text-primary-foreground hover:brightness-110"
     : "bg-surface/60 text-foreground border border-border hover:bg-surface";
+  const cls = `inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-xs font-semibold tracking-widest uppercase transition cursor-pointer ${styles} ${className}`;
+  if (href) {
+    return (
+      <a href={href} className={cls}>
+        {children}
+        <ArrowUpRight className="h-4 w-4" />
+      </a>
+    );
+  }
   return (
-    <button className={`inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-xs font-semibold tracking-widest uppercase transition ${styles} ${className}`}>
+    <button type={type} onClick={onClick} className={cls}>
       {children}
       <ArrowUpRight className="h-4 w-4" />
     </button>
