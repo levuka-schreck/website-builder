@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, MapPin, Phone, Mail, Clock, Facebook, Linkedin, Instagram, Twitter, ChevronRight } from "lucide-react";
+import { ArrowUpRight, MapPin, Phone, Mail, Clock, Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
 import { useState } from "react";
 import heroImg from "@/assets/opifex/hero.jpg";
-import workersImg from "@/assets/opifex/workers.jpg";
+
 import serviceImg from "@/assets/opifex/service.jpg";
 import t1 from "@/assets/opifex/t1.jpg";
 import t2 from "@/assets/opifex/t2.jpg";
@@ -51,12 +51,21 @@ function Logo() {
   );
 }
 
-function PillButton({ children, variant = "primary", className = "" }: { children: React.ReactNode; variant?: "primary" | "ghost"; className?: string }) {
+function PillButton({ children, variant = "primary", className = "", href, onClick, type = "button" }: { children: React.ReactNode; variant?: "primary" | "ghost"; className?: string; href?: string; onClick?: () => void; type?: "button" | "submit" }) {
   const styles = variant === "primary"
     ? "bg-primary text-primary-foreground hover:brightness-110"
     : "bg-surface/60 text-foreground border border-border hover:bg-surface";
+  const cls = `inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-xs font-semibold tracking-widest uppercase transition cursor-pointer ${styles} ${className}`;
+  if (href) {
+    return (
+      <a href={href} className={cls}>
+        {children}
+        <ArrowUpRight className="h-4 w-4" />
+      </a>
+    );
+  }
   return (
-    <button className={`inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-xs font-semibold tracking-widest uppercase transition ${styles} ${className}`}>
+    <button type={type} onClick={onClick} className={cls}>
       {children}
       <ArrowUpRight className="h-4 w-4" />
     </button>
@@ -74,7 +83,7 @@ function Nav() {
             <a key={l} href={`#${l.toLowerCase()}`} className="hover:text-foreground transition-colors">{l}</a>
           ))}
         </nav>
-        <PillButton variant="ghost">Contact Us</PillButton>
+        <PillButton variant="ghost" href="#contact">Contact Us</PillButton>
       </div>
     </header>
   );
@@ -95,7 +104,7 @@ function Hero() {
           We deliver enterprise-grade consulting solutions that empower contractors and construction professionals to optimize operations, maximize efficiency, and deliver exceptional results on every project.
         </p>
         <div className="mt-10">
-          <PillButton>Our Services</PillButton>
+          <PillButton href="#services">Our Services</PillButton>
         </div>
       </div>
     </section>
@@ -107,7 +116,7 @@ function Stats() {
     <section className="border-t border-border/60">
       <div className="mx-auto max-w-7xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((s, i) => (
-          <div key={i} className="flex items-baseline gap-4">
+          <div key={i} className="flex items-center gap-4">
             <span className="text-5xl font-semibold text-primary">{s.n}</span>
             <span className="text-sm text-muted-foreground leading-tight max-w-[6rem]">{s.l}</span>
           </div>
@@ -132,21 +141,12 @@ function About() {
         <p>
           We understand the complex challenges facing today's construction industry and work closely with our clients to develop tailored strategies that optimize efficiency, reduce costs, and enhance project outcomes.
         </p>
-        <PillButton>Start a Project</PillButton>
+        <PillButton href="#contact">Start a Project</PillButton>
       </div>
     </section>
   );
 }
 
-function WorkersBanner() {
-  return (
-    <div className="mx-auto max-w-7xl px-6 pb-20">
-      <div className="rounded-3xl overflow-hidden">
-        <img src={workersImg} alt="Construction team" className="w-full h-72 md:h-96 object-cover" />
-      </div>
-    </div>
-  );
-}
 
 function Services() {
   const [active, setActive] = useState(0);
@@ -203,21 +203,18 @@ function Testimonials() {
             Real outcomes from real partnerships. Here's what construction leaders say about working with The Opifex Group.
           </p>
         </div>
-        <div className="flex md:justify-end items-start">
-          <PillButton>View More Testimonials</PillButton>
+        <div className="flex md:justify-end items-center">
+          <PillButton href="#testimonials">View More Testimonials</PillButton>
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t) => (
           <article key={t.name} className="bg-surface rounded-2xl overflow-hidden flex flex-col">
-            <div className="flex gap-4 p-4 items-stretch relative">
-              <img src={t.img} alt={t.name} className="w-28 h-36 object-cover rounded-xl flex-shrink-0" />
-              <div className="flex-1 pt-2">
-                <h3 className="text-base font-semibold text-foreground">{t.name}</h3>
+            <div className="flex gap-4 p-4 items-center">
+              <img src={t.img} alt={t.name} className="w-24 h-24 object-cover rounded-xl flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-semibold text-foreground truncate">{t.name}</h3>
                 <p className="text-sm text-primary mt-1">{t.role}</p>
-              </div>
-              <div className="absolute left-[6.5rem] top-1/2 -translate-y-1/2 bg-background/80 rounded-full p-1.5 border border-border">
-                <ChevronRight className="h-3 w-3" />
               </div>
             </div>
             <p className="px-5 pb-6 text-sm text-muted-foreground leading-relaxed">"{t.quote}"</p>
@@ -235,28 +232,28 @@ function Contact() {
         <div className="p-10 space-y-8">
           <h2 className="text-4xl font-semibold leading-tight">Contact<br />Information</h2>
           <ul className="space-y-5 text-sm text-muted-foreground">
-            <li className="flex gap-3"><MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>1234 Construction Ave.<br />Suite 500<br />New York, NY 10001</span></li>
-            <li className="flex gap-3 items-center"><Phone className="h-5 w-5 text-primary flex-shrink-0" />(555) 123-4567</li>
-            <li className="flex gap-3 items-center"><Mail className="h-5 w-5 text-primary flex-shrink-0" />info@theopifexgroup.com</li>
-            <li className="flex gap-3"><Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>Monday – Friday:<br />9:00 AM – 5:00 PM</span></li>
+            <li className="flex gap-3 items-start"><MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>1234 Construction Ave.<br />Suite 500<br />New York, NY 10001</span></li>
+            <li className="flex gap-3 items-center"><Phone className="h-5 w-5 text-primary flex-shrink-0" /><span>(555) 123-4567</span></li>
+            <li className="flex gap-3 items-center"><Mail className="h-5 w-5 text-primary flex-shrink-0" /><span>info@theopifexgroup.com</span></li>
+            <li className="flex gap-3 items-start"><Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>Monday – Friday:<br />9:00 AM – 5:00 PM</span></li>
           </ul>
         </div>
-        <form className="p-10 space-y-5">
+        <form className="p-10 space-y-5" onSubmit={(e) => e.preventDefault()}>
           {[
-            { l: "Full Name", p: "Ex. John Doe" },
-            { l: "Email Address", p: "Ex. johndoe@xyz.abc" },
-            { l: "Subject", p: "Subject Here" },
+            { l: "Full Name", p: "Ex. John Doe", type: "text" },
+            { l: "Email Address", p: "Ex. johndoe@xyz.abc", type: "email" },
+            { l: "Subject", p: "Subject Here", type: "text" },
           ].map((f) => (
             <div key={f.l}>
               <label className="text-xs text-muted-foreground">{f.l}</label>
-              <input placeholder={f.p} className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary" />
+              <input type={f.type} placeholder={f.p} className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary" />
             </div>
           ))}
           <div>
             <label className="text-xs text-muted-foreground">Your Message</label>
             <textarea rows={3} placeholder="Type your message" className="mt-2 w-full bg-background/40 border border-border rounded-lg px-4 py-3 text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary resize-none" />
           </div>
-          <PillButton>Send Message</PillButton>
+          <PillButton type="submit">Send Message</PillButton>
         </form>
         <div className="relative min-h-[300px]">
           <img src={contactImg} alt="Office" className="absolute inset-0 w-full h-full object-cover" />
