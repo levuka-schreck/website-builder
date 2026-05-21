@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, MapPin, Phone, Mail, Clock, Facebook, Linkedin, Instagram, Twitter, ChevronRight } from "lucide-react";
+import { ArrowUpRight, MapPin, Phone, Mail, Clock, Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
 import { useState } from "react";
 import heroImg from "@/assets/opifex/hero.jpg";
 import workersImg from "@/assets/opifex/workers.jpg";
