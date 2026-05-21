@@ -241,10 +241,10 @@ function Contact() {
         <div className="p-10 space-y-8">
           <h2 className="text-4xl font-semibold leading-tight">Contact<br />Information</h2>
           <ul className="space-y-5 text-sm text-muted-foreground">
-            <li className="flex gap-3"><MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>1234 Construction Ave.<br />Suite 500<br />New York, NY 10001</span></li>
-            <li className="flex gap-3 items-center"><Phone className="h-5 w-5 text-primary flex-shrink-0" />(555) 123-4567</li>
-            <li className="flex gap-3 items-center"><Mail className="h-5 w-5 text-primary flex-shrink-0" />info@theopifexgroup.com</li>
-            <li className="flex gap-3"><Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>Monday – Friday:<br />9:00 AM – 5:00 PM</span></li>
+            <li className="flex gap-3 items-start"><MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>1234 Construction Ave.<br />Suite 500<br />New York, NY 10001</span></li>
+            <li className="flex gap-3 items-center"><Phone className="h-5 w-5 text-primary flex-shrink-0" /><span>(555) 123-4567</span></li>
+            <li className="flex gap-3 items-center"><Mail className="h-5 w-5 text-primary flex-shrink-0" /><span>info@theopifexgroup.com</span></li>
+            <li className="flex gap-3 items-start"><Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" /><span>Monday – Friday:<br />9:00 AM – 5:00 PM</span></li>
           </ul>
         </div>
         <form className="p-10 space-y-5">
