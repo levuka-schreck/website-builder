@@ -179,7 +179,7 @@ function Services() {
             <ArrowUpRight className="h-4 w-4" />
           </button>
         </div>
-        <div className="md:col-span-3 flex flex-col justify-end gap-4">
+        <div className="md:col-span-3 flex flex-col justify-center gap-4">
           <button className="self-end bg-surface rounded-lg p-2 border border-border hidden md:inline-flex">
             <ArrowUpRight className="h-4 w-4" />
           </button>
