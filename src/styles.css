@@ -4,13 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Epilogue:wght@300;400;500;600;700&display=swap");
-
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -30,59 +28,82 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-heading: var(--heading);
-  --color-surface: var(--surface);
-  --color-ink: var(--ink);
-  --color-steel: var(--steel);
-  --color-slate-mid: var(--slate-mid);
-  --color-slate-soft: var(--slate-soft);
-  --font-display: "Urbanist", system-ui, sans-serif;
-  --font-body: "Epilogue", system-ui, sans-serif;
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-signal: var(--signal);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "Space Mono", monospace;
 }
 
 :root {
-  --radius: 0.25rem;
-  /* Slate & Steel palette */
-  --ink: oklch(0.30 0.022 255);          /* #2d3748 */
-  --steel: oklch(0.42 0.022 255);        /* #4a5568 */
-  --slate-mid: oklch(0.56 0.018 255);    /* #718096 */
-  --slate-soft: oklch(0.72 0.012 255);   /* #a0aec0 */
-
-  --background: oklch(1 0 0);
-  --surface: oklch(0.98 0.005 250);      /* near #f8fafc */
-  --foreground: var(--ink);
-  --muted: oklch(0.96 0.005 250);
-  --muted-foreground: var(--steel);
-  --card: oklch(1 0 0);
-  --card-foreground: var(--ink);
-  --popover: oklch(1 0 0);
-  --popover-foreground: var(--ink);
-  --primary: var(--ink);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: var(--surface);
-  --secondary-foreground: var(--ink);
-  --accent: var(--slate-soft);
-  --accent-foreground: var(--ink);
-  --heading: var(--ink);
-  --destructive: oklch(0.55 0.20 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.92 0.008 250);       /* hairline ~#e2e8f0 */
-  --input: oklch(0.92 0.008 250);
-  --ring: var(--ink);
+  --radius: 0;
+  --background: oklch(0.16 0.018 244);
+  --foreground: oklch(0.97 0.006 220);
+  --panel: oklch(0.205 0.024 238);
+  --line: oklch(0.32 0.025 235);
+  --signal: oklch(0.68 0.13 218);
+  --card: var(--panel);
+  --card-foreground: var(--foreground);
+  --popover: var(--panel);
+  --popover-foreground: var(--foreground);
+  --primary: var(--signal);
+  --primary-foreground: oklch(0.14 0.02 242);
+  --secondary: oklch(0.25 0.025 240);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--panel);
+  --muted-foreground: oklch(0.72 0.025 225);
+  --accent: var(--signal);
+  --accent-foreground: oklch(0.14 0.02 242);
+  --destructive: oklch(0.62 0.19 28);
+  --destructive-foreground: var(--foreground);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--signal);
 }
 
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; }
   body {
-    background-color: var(--color-background);
+    margin: 0;
+    background: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4, h5 {
-    color: var(--color-heading);
-    font-family: var(--font-display);
-    letter-spacing: -0.02em;
-  }
+  h1, h2, h3, h4, h5 { letter-spacing: 0; }
+  ::selection { background: var(--color-signal); color: var(--color-primary-foreground); }
+}
+
+@utility grid-surface {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--line) 34%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--line) 34%, transparent) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--color-signal);
+}
+
+@utility section-title {
+  margin-top: 1.25rem;
+  max-width: 46rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: 0;
+  color: var(--color-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
